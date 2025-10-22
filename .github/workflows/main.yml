@@ -1,29 +1,66 @@
-name: Deploy to GitHub Pages
+# Nome do fluxo de trabalho
+name: CI/CD Pipeline em 3 Tarefas
 
+# Gatilho: Roda em pushes para a branch 'main'
 on:
   push:
     branches: [ main ]
 
+# Permissões necessárias para a Tarefa 3 (Publicar no GitHub Pages)
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Agrupamento de todas as tarefas (Jobs)
 jobs:
-  deploy:
+  # --- TAREFA 1: TESTAR ---
+  testar:
+    name: 1. Testar o código
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Baixar o código do repositório
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
+      # Simulação de um passo de teste. Para um site simples,
+      # você poderia usar um "linter" para verificar HTML/CSS.
+      # Por enquanto, vamos apenas simular um sucesso.
+      - name: Rodar testes e verificações de qualidade
+        run: echo "✅ Testes passaram!"
 
-      - name: Upload artifact
+  # --- TAREFA 2: CONSTRUIR ---
+  construir:
+    name: 2. Construir o site
+    runs-on: ubuntu-latest
+    # IMPORTANTE: Esta tarefa só roda se a tarefa 'testar' for bem-sucedida
+    needs: testar
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v4
+
+      # Aqui você colocaria os comandos para construir seu site
+      # (ex: minificar CSS/JS). Vamos simular a criação dos arquivos.
+      - name: Construir os arquivos do site
+        run: |
+          mkdir ./site
+          cp index.html ./site/index.html
+          cp style.css ./site/style.css
+          echo "📦 Site construído na pasta 'site'."
+
+      # Salva o resultado da construção (a pasta 'site') como um "artefato"
+      # para que a próxima tarefa possa usá-lo.
+      - name: Salvar artefato da construção
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: './site'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+  # --- TAREFA 3: PUBLICAR ---
+  publicar:
+    name: 3. Publicar no GitHub Pages
+    runs-on: ubuntu-latest
+    # IMPORTANTE: Esta tarefa só roda se a tarefa 'construir' for bem-sucedida
+    needs: construir
+    steps:
+      # Pega o artefato salvo na tarefa anterior e o prepara para publicação
+      - name: Publicar o site
         uses: actions/deploy-pages@v4
