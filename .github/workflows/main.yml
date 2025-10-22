@@ -43,7 +43,7 @@ jobs:
       - name: Construir os arquivos do site
         run: |
           mkdir ./site
-          cp receita.html ./site/receita.html
+          cp index.html ./site/index.html
           echo "📦 Site construído na pasta 'site'."
 
       # Salva o resultado da construção (a pasta 'site') como um "artefato"
