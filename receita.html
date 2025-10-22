@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página HTML com CSS</title>
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+  }
+  header {
+ background: linear-gradient(to right, #d94e00, #d2881a, #ffc400);
+  color: white;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 20px;
+  margin-top: 20px;  
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: rgb(68, 67, 67);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+  .container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1f1c1c;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.1);
+  }
+  h2 {
+    color: #fd7a00;
+    text-align: center;
+  }
+  h1 {
+    text-align: left;
+  }
+  h3 {
+    color: #ffcc00;
+  }
+  p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  .classe1 {
+    margin-top: 20px;
+    padding: 100px;
+    background-color: #000000;
+    border-radius: 5px;
+  }
+  form label {
+    display: block;
+    margin-top: 10px;
+    color: #000000;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  input[type="checkbox"] {
+    margin-right: 8px;
+  }
+  input[type="submit"] {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  input[type="submit"]:hover {
+    background-color: #555;
+  }
+  .cards {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .card {
+    flex: 1;
+    min-width: 250px;  
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0, 0.1);
+  }
+  .card h3 {
+    margin-top: 0;
+    color: #444;
+  }
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-top: 40px;
+  }
+  .botao-laranja {
+    background-color: orange;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: scale(1);
+  }
+  .botao-laranja:hover {
+    background-color: darkorange;
+    transform: scale(1.1);
+  }
+  .botao-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .paragrafo-container{
+    display: flex;
+    justify-content: center;
+
+  }
+</style>
+</head>
+<body>
+ <header>
+    <div class="header-content">
+      <h1>🔥Produto</h1>
+    </div>
+    <nav>
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+  
+  <div class="container" id="inicio">
+    <h2>Descubra o Prouduto que vai Transformar seu Dia.</h2>
+  <div class="paragrafo-container">
+    <p>Simples, poderoso, eficiente. Descubra como nosso produto pode <br>facilitar sua vida de forma incrível.</br></p>
+    </div>
+    <!-- Botão centralizado -->
+    <div class="botao-container">
+      <button class="botao-laranja">Quero Saber Mais</button>
+    </div>
+
+    <div class="cards" id="info">
+      <div class="card">
+        <h3>🚀Rápido</h3>
+        <p>Velocidade é essencial. Nossa solução é otimizada para entregar resultados em tempo recorde</p>
+      </div>
+      <div class="card">
+        <h3>🔒Seguro</h3>
+        <p>Você pode adicionar quantos cards quiser nesta seção.</p>
+      </div>
+      <div class="card">
+        <h3>💡Inteligente</h3>
+        <p>Ótimo para mostrar informações adicionais ou destaques.</p>
+      </div>
+    </div>
+
+    <div class="classe1" id="formulario">
+      <h2>Entre em Contato</h2>
+      <form>
+        <label for="nome"></label>
+        <input type="text" id="nome" name="nome" required placeholder="Seu nome">
+
+        <label for="email"></label>
+        <input type="email" id="email" name="email" required placeholder="Seu e-mail">
+
+        <label for="mensagem"></label>
+        <textarea placeholder="Sua mensagem" id="mensagem" name="mensagem" required></textarea>
+        <input type="submit" value="Enviar">
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Produto Incrível</p>
+  </footer>
+
+</body>
+</html>
