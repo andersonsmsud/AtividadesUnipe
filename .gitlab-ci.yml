@@ -1,0 +1,31 @@
+stages:
+  - build
+  - sast
+  - test
+  - dast
+  - deploy
+
+build:
+  stage: build
+  script:
+    - echo "Building the application..."
+
+sast:
+  stage: sast
+  script:
+    - echo "Running Static Application Security Testing (SAST)..."
+
+unit_test:
+  stage: test
+  script:
+    - echo "Running unit tests..."
+
+dast:
+  stage: dast
+  script:
+    - echo "Running Dynamic Application Security Testing (DAST)..."
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying the application..."
